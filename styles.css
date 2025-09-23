@@ -290,8 +290,8 @@ img:hover {
 }
 
 .skill-category:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 30px rgba(244, 243, 243, 0.1);
+;
 }
 
 .skill-category h3 {
@@ -347,8 +347,8 @@ img:hover {
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 30px rgba(244, 243, 243, 0.1);
+
 }
 
 .project-card h3 {
@@ -464,8 +464,7 @@ img:hover {
 }
 
 .experience-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 30px rgba(244, 243, 243, 0.1);
 }
 
 .experience-item i {
@@ -529,6 +528,10 @@ img:hover {
 .form-group {
     margin-bottom: 20px;
 }
+.form-group:hover{
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+}
 
 .form-group input,
 .form-group textarea {
@@ -567,9 +570,8 @@ img:hover {
 }
 
 .submit-btn:hover {
-    background: #e54982;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
 }
 
 /* Footer */
