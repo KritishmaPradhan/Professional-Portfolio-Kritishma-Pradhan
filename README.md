@@ -34,4 +34,4 @@ The site features smooth scrolling, interactive animations, and a clean UI optim
 
 ### Clone the repository
 ```bash
-git clone https://github.com/kritishmapradhan/portfolio.git
+git clone https://github.com/KritishmaPradhan/Professional-Portfolio-Kritishma-Pradhan.git
