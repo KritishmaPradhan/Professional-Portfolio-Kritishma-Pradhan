@@ -29,7 +29,10 @@ The site features smooth scrolling, interactive animations, and a clean UI optim
   - *(Optional)* AOS (Animate on Scroll) or custom JS for animations  
 
 ---
-
+## View My Portfolio Live
+- Click the link
+- https://kritishmapradhan.github.io/Professional-Portfolio-Kritishma-Pradhan/
+  
 ## 🚀 Getting Started
 
 ### Clone the repository
