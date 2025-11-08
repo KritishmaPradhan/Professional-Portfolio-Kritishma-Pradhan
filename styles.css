@@ -176,6 +176,14 @@ a:hover {
 
 /* Hero Section */
 
+.back-vid {
+    position: fixed; /* ensures video remains fixed in background even if scrolled */
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    mix-blend-mode: overlay;
+}
+
 .hero .container {
   display: flex;
   align-items: center;       
@@ -613,6 +621,19 @@ footer {
 }
 
 /* Responsive Styles */
+@media (max-aspect-ratio: 16/9) {
+    .back-vid {
+        width: auto;
+        height: 100%;
+    }
+}
+@media (min-aspect-ratio: 16/9) {
+    .back-vid {
+        width: 100%;
+        height: auto;
+    }
+}
+
 @media (max-width: 992px) {
     .about-content {
         flex-direction: column;
