@@ -43,25 +43,26 @@ window.addEventListener('scroll', () => {
 // Set current year in footer
 document.getElementById('current-year').textContent = new Date().getFullYear();
 
-// Form submission
-const contactForm = document.getElementById('contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+//omit form submission code for now
+// // Form submission
+// const contactForm = document.getElementById('contact-form');
+// if (contactForm) {
+//     contactForm.addEventListener('submit', function(e) {
+//         e.preventDefault();
         
-        // Get form data
-        const formData = new FormData(this);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const subject = formData.get('subject');
-        const message = formData.get('message');
+//         // Get form data
+//         const formData = new FormData(this);
+//         const name = formData.get('name');
+//         const email = formData.get('email');
+//         const subject = formData.get('subject');
+//         const message = formData.get('message');
         
-        // Here you would typically send the form data to a server
-        // For now, we'll just show an alert
-        alert(`Thank you for your message, ${name}! I'll get back to you soon at ${email}.`);
-        this.reset();
-    });
-}
+//         // Here you would typically send the form data to a server
+//         // For now, we'll just show an alert
+//         alert(`Thank you for your message, ${name}! I'll get back to you soon at ${email}.`);
+//         this.reset();
+//     });
+// }
 
 // Animate elements on scroll
 const animateOnScroll = () => {
@@ -124,3 +125,4 @@ window.addEventListener('scroll', () => {
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
 });
+
