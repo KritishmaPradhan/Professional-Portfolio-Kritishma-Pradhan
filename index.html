@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kritishma Pradhan - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@latest/dist/dotlottie-wc.js" type="module"></script>
 </head>
 <body> 
     <!-- Navigation -->
@@ -33,8 +37,7 @@
     <section id="home" class="hero">
         <video class="back-vid" autoplay loop muted plays-inline src="galaxy.mp4"></video>
         <div class="container">
-        <video autoplay loop muted playsinline
-          style="width:100%; height:auto; object-fit:cover; margin-top: -50px;">
+        <video class="hero-layer-video" autoplay loop muted playsinline>
           <source src="animatevideo.mp4" type="video/mp4">
         </video>
             <div class="hero-img">
@@ -131,11 +134,23 @@
                     <p>A retro-inspired Snake game with quiz-based gameplay and user/admin authentication system.</p>
                     <div class="project-tags">
                         <span>Python</span>
-                        <span>Django</span>
+                        <span>Turtle</span>
                         <span>SQLite</span>
                     </div>
                     <a href="https://github.com/KritishmaPradhan/The-Brainy-snake-game" target="_blank" class="project-link">
                         <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+                <div class="project-card">
+                    <h3>Hastakala by K</h3>
+                    <p>A website for my small crochet business.</p>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <a href="https://kritishmapradhan.github.io/hastakalabyk-website-for-crochet-brand/" target="_blank" class="project-link">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
                     </a>
                 </div>
             </div>
@@ -169,26 +184,43 @@
     <section id="experience" class="section">
         <div class="container">
             <h2>Experience & Activities</h2>
-            <div class="experience-grid">
-                <div class="experience-item">
-                    <i class="fas fa-laptop-code"></i>
-                    <h3>Arduino IDE Training Program</h3>
-                    <p>Gained hands-on experience with microcontroller programming and embedded systems.</p>
-                </div>
-                <div class="experience-item">
-                    <i class="fas fa-brain"></i>
-                    <h3>Machine Learning Fundamentals Training</h3>
-                    <p>Learned the basics of machine learning algorithms and their applications.</p>
-                </div>
-                <div class="experience-item">
-                    <i class="fas fa-code"></i>
-                    <h3>Coding Competitions</h3>
-                    <p>Participated in various coding challenges to enhance problem-solving skills.</p>
-                </div>
-                <div class="experience-item">
-                    <i class="fas fa-users"></i>
-                    <h3>Technical Exhibition</h3>
-                    <p>Participated and volunteered in technical exhibitions showcasing innovative projects.</p>
+            <div class="experience-carousel">
+                <div class="experience-grid">
+                    <div class="experience-item">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>Arduino IDE Training Program</h3>
+                        <p>Gained hands-on experience with microcontroller programming and embedded systems.</p>
+                    </div>
+                    <div class="experience-item">
+                        <i class="fas fa-brain"></i>
+                        <h3>Machine Learning Fundamentals Training</h3>
+                        <p>Learned the basics of machine learning algorithms and their applications.</p>
+                    </div>
+                    <div class="experience-item">
+                        <i class="fas fa-code"></i>
+                        <h3>Coding Competitions</h3>
+                        <p>Participated in various coding challenges to enhance problem-solving skills.</p>
+                    </div>
+                    <div class="experience-item">
+                        <i class="fas fa-users"></i>
+                        <h3>Technical Exhibition</h3>
+                        <p>Participated and volunteered in technical exhibitions showcasing innovative projects.</p>
+                    </div>
+                    <div class="experience-item">
+                        <i class="fas fa-calendar-check"></i>
+                        <h3>Event Organization</h3>
+                        <p>Organized and marketed events, volunteered, presented hackathon project demos, and participated in tech debates.</p>
+                    </div>
+                    <div class="experience-item">
+                        <i class="fas fa-palette"></i>
+                        <h3>Design Competition</h3>
+                        <p>Participated in design competitions and completed basic graphic design training.</p>
+                    </div>
+                    <div class="experience-item">
+                        <i class="fas fa-pen-nib"></i>
+                        <h3>Creative Writing & Content Curation</h3>
+                        <p>Built and curated literary content through personal writing projects and web publishing practice.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -267,6 +299,12 @@
                         <a href="https://github.com/KritishmaPradhan" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="https://linkedin.com/in/kritishma-pradhan-8181b1293" target="_blank"><i class="fab fa-linkedin"></i></a>
                     </div>
+                    <dotlottie-wc
+                        src="https://lottie.host/6d4dc2ee-659e-4e2c-864d-d7182a6ea15e/N7P2MryTFL.lottie"
+                        style="width: 200px; height: 200px; margin:0 auto;"
+                        autoplay
+                        loop
+                    ></dotlottie-wc>
                 </div>
                 <form action="https://formsubmit.co/pradhankritishma@gmail.com" method="POST" id="contact-form" class="contact-form">
                         <input type="hidden" name="_subject" value="New Portfolio Contact">
@@ -300,4 +338,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
