@@ -165,9 +165,35 @@ const initExperienceCarousel = () => {
     const setup = () => {
         const viewportWidth = viewport.clientWidth;
         const itemWidth = Math.max(220, Math.min(360, viewportWidth * 0.52));
-        radius = Math.max(260, itemWidth * 1.28);
-
+        
+        // Responsive radius and height calculation
+        let responsiveRadius;
+        let containerHeight;
+        
+        if (viewportWidth <= 480) {
+            responsiveRadius = Math.max(320, itemWidth * 1.15);
+            containerHeight = 420;
+            speed = 0.28;
+        } else if (viewportWidth <= 768) {
+            responsiveRadius = Math.max(360, itemWidth * 1.22);
+            containerHeight = 380;
+            speed = 0.25;
+        } else if (viewportWidth <= 1024) {
+            responsiveRadius = Math.max(340, itemWidth * 1.28);
+            containerHeight = 380;
+            speed = 0.22;
+        } else {
+            responsiveRadius = Math.max(380, itemWidth * 1.32);
+            containerHeight = 420;
+            speed = 0.22;
+        }
+        
+        radius = responsiveRadius;
+        
         track.style.setProperty('--exp-item-width', `${itemWidth}px`);
+        track.style.height = `${containerHeight}px`;
+        track.style.minHeight = `${containerHeight}px`;
+        viewport.style.minHeight = `${containerHeight + 80}px`;
 
         const stepAngle = 360 / cards.length;
         cards.forEach((card, index) => {
@@ -189,7 +215,12 @@ const initExperienceCarousel = () => {
             const radians = (relative * Math.PI) / 180;
             const frontness = (Math.cos(radians) + 1) / 2;
             const scale = 0.58 + (frontness * 0.54);
-            const y = (1 - frontness) * 70;
+            
+            // Responsive Y offset - reduced on mobile
+            const viewportWidth = viewport.clientWidth;
+            const maxYOffset = viewportWidth <= 768 ? 50 : 70;
+            const y = (1 - frontness) * maxYOffset;
+            
             const opacity = 0.28 + (frontness * 0.72);
             const blur = (1 - frontness) * 2.2;
 

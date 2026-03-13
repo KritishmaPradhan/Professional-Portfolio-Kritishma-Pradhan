@@ -568,10 +568,11 @@ a:hover {
 /* Experience Section */
 .experience-carousel {
     margin-top: 50px;
-    overflow: hidden;
+    overflow: visible;
     perspective: 1800px;
     perspective-origin: center center;
-    min-height: 360px;
+    min-height: 420px;
+    padding: 40px 0;
 }
 
 .experience-grid {
@@ -582,7 +583,8 @@ a:hover {
     will-change: transform;
     transform: translateX(0);
     transform-style: preserve-3d;
-    height: 340px;
+    height: 380px;
+    min-height: 380px;
 }
 
 .experience-item {
@@ -904,11 +906,13 @@ footer {
 
 @media (max-width: 992px) {
     .experience-carousel {
-        min-height: 320px;
+        min-height: 380px;
+        padding: 40px 0;
     }
 
     .experience-grid {
-        height: 300px;
+        height: 340px;
+        min-height: 340px;
     }
 
     .about-content {
@@ -944,7 +948,7 @@ footer {
         top: 80px;
         gap: 0;
         flex-direction: column;
-        background: white;
+        background: #0f0617;
         width: 100%;
         text-align: center;
         transition: 0.3s;
@@ -987,15 +991,59 @@ footer {
         flex: 1 1 100%;
         text-align: center;
     }
+
+    .experience-carousel {
+        min-height: 400px;
+        padding: 35px 0;
+    }
+
+    .experience-grid {
+        height: 360px;
+        min-height: 360px;
+    }
+
+    .experience-item {
+        padding: 25px;
+    }
+
+    .experience-item i {
+        font-size: 2.2rem;
+    }
+
+    .experience-item h3 {
+        font-size: 1.15rem;
+    }
+
+    .experience-item p {
+        font-size: 0.95rem;
+    }
 }
 
 @media (max-width: 576px) {
     .experience-carousel {
-        min-height: 300px;
+        min-height: 420px;
+        padding: 30px 0;
     }
 
     .experience-grid {
-        height: 280px;
+        height: 380px;
+        min-height: 380px;
+    }
+
+    .experience-item {
+        padding: 20px;
+    }
+
+    .experience-item i {
+        font-size: 2rem;
+    }
+
+    .experience-item h3 {
+        font-size: 1.1rem;
+    }
+
+    .experience-item p {
+        font-size: 0.9rem;
     }
 
     h1 {
