@@ -323,3 +323,42 @@ const initAchievementsSection = () => {
 };
 
 initAchievementsSection();
+
+// Creativity Toggle Functionality
+const initCreativityToggle = () => {
+    const toggleBtns = document.querySelectorAll('.toggle-btn');
+    const galleries = document.querySelectorAll('.creativity-gallery');
+
+    toggleBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const category = btn.getAttribute('data-category');
+
+            // Remove active class from all buttons
+            toggleBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
+
+            // Hide all galleries
+            galleries.forEach(gallery => {
+                gallery.style.display = 'none';
+            });
+
+            // Show selected gallery
+            const selectedGallery = document.getElementById(`${category}-gallery`);
+            if (selectedGallery) {
+                selectedGallery.style.display = 'grid';
+            }
+        });
+    });
+
+    // Add hover effects to creativity placeholders
+    const placeholders = document.querySelectorAll('.creativity-placeholder');
+    placeholders.forEach(placeholder => {
+        placeholder.addEventListener('click', () => {
+            // Future functionality: image upload or preview
+            console.log('Placeholder clicked - ready for image upload');
+        });
+    });
+};
+
+initCreativityToggle();

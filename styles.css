@@ -513,6 +513,220 @@ a:hover {
     margin-right: 8px;
 }
 
+/* Figma Designs Section */
+.figma-section {
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 2px solid rgba(229, 73, 130, 0.3);
+}
+
+.figma-section h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--dark-color);
+}
+
+.figma-section i {
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+.section-subtitle {
+    color: var(--text-light);
+    font-size: 1rem;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.figma-links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 60px;
+}
+
+.figma-link-card {
+    background: rgba(18, 14, 30, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 30px 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.figma-link-card .figma-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(229, 73, 130, 0.2), rgba(255, 124, 171, 0.2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
+
+.figma-link-card h4 {
+    color: var(--dark-color);
+    font-size: 1.15rem;
+    margin: 0;
+}
+
+.figma-link-card p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.figma-link-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 15px rgba(249, 246, 248, 0.34);
+}
+
+.figma-link-card:hover .figma-icon {
+    background: linear-gradient(135deg, rgba(229, 73, 130, 0.4), rgba(255, 124, 171, 0.4));
+    transform: scale(1.1);
+}
+
+/* Creativity Section */
+.creativity-section {
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 2px solid rgba(229, 73, 130, 0.3);
+}
+
+.creativity-section h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--dark-color);
+}
+
+.creativity-section i {
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+/* Toggle Buttons */
+.creativity-toggle {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.toggle-btn {
+    padding: 12px 30px;
+    border: 2px solid rgba(229, 73, 130, 0.4);
+    background: transparent;
+    color: var(--text-light);
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+.toggle-btn i {
+    margin-right: 0;
+}
+
+.toggle-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.toggle-btn.active {
+    background: linear-gradient(135deg, var(--primary-color), #ff7cab);
+    border-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 8px 24px rgba(229, 73, 130, 0.3);
+}
+
+/* Creativity Gallery */
+.creativity-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    animation: fadeInGallery 0.5s ease-out;
+}
+
+@keyframes fadeInGallery {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.creativity-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.creativity-placeholder {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(135deg, rgba(229, 73, 130, 0.15), rgba(255, 124, 171, 0.1));
+    border: 2px solid rgba(217, 210, 213, 0.693);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: rgba(229, 73, 130, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.creativity-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.creativity-item:hover .creativity-placeholder {
+    border-color: var(--primary-color);
+    background: linear-gradient(135deg, rgba(229, 73, 130, 0.25), rgba(255, 124, 171, 0.15));
+    transform: scale(1.05);
+}
+
+.creativity-item:hover .creativity-placeholder::before {
+    left: 100%;
+}
+
+.creativity-item p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin: 0;
+    text-align: center;
+}
+
 /* Education Section */
 .education-item {
     background: rgba(18, 14, 30, 0.72);
@@ -1017,6 +1231,35 @@ footer {
     .experience-item p {
         font-size: 0.95rem;
     }
+
+    /* Responsive Figma and Creativity for Tablet */
+    .figma-links-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+
+    .figma-link-card {
+        padding: 25px 20px;
+    }
+
+    .figma-section h3,
+    .creativity-section h3 {
+        font-size: 1.6rem;
+    }
+
+    .creativity-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 15px;
+    }
+
+    .creativity-toggle {
+        gap: 10px;
+    }
+
+    .toggle-btn {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
 }
 
 @media (max-width: 576px) {
@@ -1062,5 +1305,67 @@ footer {
     .experience-item,
     .skill-category {
         padding: 20px;
+    }
+
+    /* Responsive Figma and Creativity for Mobile */
+    .figma-section h3,
+    .creativity-section h3 {
+        font-size: 1.4rem;
+    }
+
+    .figma-links-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .figma-link-card {
+        padding: 20px 15px;
+    }
+
+    .figma-link-card .figma-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .figma-link-card h4 {
+        font-size: 1rem;
+    }
+
+    .figma-link-card p {
+        font-size: 0.85rem;
+    }
+
+    .creativity-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        gap: 12px;
+    }
+
+    .creativity-item {
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .creativity-placeholder {
+        font-size: 2rem;
+    }
+
+    .creativity-item p {
+        font-size: 0.8rem;
+    }
+
+    .creativity-toggle {
+        gap: 8px;
+        margin-bottom: 30px;
+    }
+
+    .toggle-btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 30px;
     }
 }
