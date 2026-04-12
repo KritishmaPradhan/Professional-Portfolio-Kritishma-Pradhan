@@ -680,13 +680,12 @@ a:hover {
     padding: 15px;
     border-radius: 10px;
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .creativity-placeholder {
     width: 100%;
     aspect-ratio: 1 / 1;
-    background: linear-gradient(135deg, rgba(229, 73, 130, 0.15), rgba(255, 124, 171, 0.1));
-    border: 2px solid rgba(217, 210, 213, 0.693);
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -697,34 +696,49 @@ a:hover {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2), inset -2px -2px 5px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(229, 73, 130, 0.1);
 }
 
-.creativity-placeholder::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
+.creativity-placeholder img {
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transition: left 0.5s ease;
+    object-fit: cover;
+    object-position: center;
+    transition: all 0.3s ease;
+    border-radius: 6px;
 }
 
 .creativity-item:hover .creativity-placeholder {
-    border-color: var(--primary-color);
-    background: linear-gradient(135deg, rgba(229, 73, 130, 0.25), rgba(255, 124, 171, 0.15));
-    transform: scale(1.05);
+    transform: translateY(-6px);
+    box-shadow: 0 0 25px rgba(249, 246, 248, 0.34);
 }
 
-.creativity-item:hover .creativity-placeholder::before {
-    left: 100%;
+.creativity-item:hover .creativity-placeholder img {
+    transform: scale(1.08);
 }
+
 
 .creativity-item p {
     color: var(--text-light);
     font-size: 0.9rem;
     margin: 0;
     text-align: center;
+    /* background: linear-gradient(135deg, rgba(231, 228, 229, 0.285), rgba(252, 144, 184, 0.15)); */
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(246, 244, 244, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(229, 73, 130, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.creativity-item:hover p {
+    background: linear-gradient(0deg, rgba(53, 53, 53, 0.533), rgba(33, 32, 32, 0.25));
+    transform: translateY(-6px);
+    box-shadow: 0 0 25px rgba(249, 246, 248, 0.34);
 }
 
 /* Education Section */
@@ -951,6 +965,62 @@ a:hover {
 }
 
 .gallery-lightbox-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+/* Creativity Lightbox */
+.creativity-lightbox {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 26px;
+  background: rgba(8, 5, 16, 0.78);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 2000;
+}
+
+.creativity-lightbox.active {
+  display: flex;
+}
+
+.creativity-lightbox-content {
+  width: min(860px, 100%);
+  max-height: 90vh;
+  background: rgba(18, 14, 30, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.5);
+  padding: 16px;
+  position: relative;
+}
+
+.creativity-lightbox-content img {
+  width: 100%;
+  max-height: 72vh;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.creativity-lightbox-caption {
+  margin-top: 12px;
+  color: #fff;
+  line-height: 1.45;
+}
+
+.creativity-lightbox-close {
   position: absolute;
   top: 12px;
   right: 12px;
@@ -1260,6 +1330,11 @@ footer {
         padding: 10px 20px;
         font-size: 0.95rem;
     }
+
+    .creativity-item p {
+        font-size: 0.85rem;
+        padding: 7px 14px;
+    }
 }
 
 @media (max-width: 576px) {
@@ -1352,6 +1427,7 @@ footer {
 
     .creativity-item p {
         font-size: 0.8rem;
+        padding: 6px 12px;
     }
 
     .creativity-toggle {

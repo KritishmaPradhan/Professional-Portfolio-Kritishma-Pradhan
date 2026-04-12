@@ -324,10 +324,49 @@ const initAchievementsSection = () => {
 
 initAchievementsSection();
 
-// Creativity Toggle Functionality
+// Creativity Toggle Functionality with Lightbox
 const initCreativityToggle = () => {
     const toggleBtns = document.querySelectorAll('.toggle-btn');
     const galleries = document.querySelectorAll('.creativity-gallery');
+
+    // Create lightbox for creativity items
+    const creativityLightbox = document.createElement('div');
+    creativityLightbox.className = 'creativity-lightbox';
+    creativityLightbox.innerHTML = `
+        <div class="creativity-lightbox-content">
+            <button class="creativity-lightbox-close" type="button" aria-label="Close preview">&times;</button>
+            <img src="" alt="Design preview">
+            <p class="creativity-lightbox-caption"></p>
+        </div>
+    `;
+    document.body.appendChild(creativityLightbox);
+
+    const closeLightboxBtn = creativityLightbox.querySelector('.creativity-lightbox-close');
+    const lightboxImg = creativityLightbox.querySelector('img');
+    const lightboxCaption = creativityLightbox.querySelector('.creativity-lightbox-caption');
+
+    const closeCreativityLightbox = () => {
+        creativityLightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    // Add click handlers to creativity items
+    const addLightboxHandlers = () => {
+        const creativityItems = document.querySelectorAll('.creativity-item');
+        creativityItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img');
+                const caption = item.querySelector('p');
+                if (!img) return;
+
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt || 'Design';
+                lightboxCaption.textContent = caption ? caption.textContent : 'Design';
+                creativityLightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+    };
 
     toggleBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -347,18 +386,25 @@ const initCreativityToggle = () => {
             const selectedGallery = document.getElementById(`${category}-gallery`);
             if (selectedGallery) {
                 selectedGallery.style.display = 'grid';
+                // Re-attach click handlers when gallery is shown
+                setTimeout(addLightboxHandlers, 0);
             }
         });
     });
 
-    // Add hover effects to creativity placeholders
-    const placeholders = document.querySelectorAll('.creativity-placeholder');
-    placeholders.forEach(placeholder => {
-        placeholder.addEventListener('click', () => {
-            // Future functionality: image upload or preview
-            console.log('Placeholder clicked - ready for image upload');
-        });
+    // Lightbox close handlers
+    closeLightboxBtn.addEventListener('click', closeCreativityLightbox);
+    creativityLightbox.addEventListener('click', e => {
+        if (e.target === creativityLightbox) closeCreativityLightbox();
     });
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && creativityLightbox.classList.contains('active')) {
+            closeCreativityLightbox();
+        }
+    });
+
+    // Initial setup
+    addLightboxHandlers();
 };
 
-initCreativityToggle();
+initCreativityToggle(); 
