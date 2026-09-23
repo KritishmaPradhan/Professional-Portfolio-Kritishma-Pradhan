@@ -408,3 +408,159 @@ const initCreativityToggle = () => {
 };
 
 initCreativityToggle(); 
+
+// Portfolio chatbot
+const initPortfolioChatbot = () => {
+    const chatbot = document.getElementById('portfolio-chatbot');
+    if (!chatbot) return;
+
+    const toggle = document.getElementById('portfolio-chatbot-toggle');
+    const close = document.getElementById('portfolio-chatbot-close');
+    const panel = document.getElementById('portfolio-chatbot-panel');
+    const messages = document.getElementById('portfolio-chatbot-messages');
+    const form = document.getElementById('portfolio-chatbot-form');
+    const input = document.getElementById('portfolio-chatbot-input');
+    const suggestions = document.getElementById('portfolio-chatbot-suggestions');
+
+    const knowledgeBase = [
+        { topic: "About me", text: "I'm a computer engineer who enjoys building web apps and learning about AI. I'm open to freelance and full-time opportunities." },
+        { topic: "Projects", text: "My featured projects include Hastakala by K, an ecommerce website for a small crochet business; FindIt, a lost and found system built with Laravel, MySQL, and React; and Brainy Snake Game, a quiz-based Snake game built with Python, Turtle, and SQLite. I also create Figma prototypes, graphic designs, and logos." },
+        { topic: "Project", text: "My featured projects include Hastakala by K, an ecommerce website for a small crochet business; FindIt, a lost and found system built with Laravel, MySQL, and React; and Brainy Snake Game, a quiz-based Snake game built with Python, Turtle, and SQLite." },
+        { topic: "Skills", text: "My core skills are JavaScript, Python, HTML/CSS, React, and I'm currently learning about machine learning and Data science." },
+        { topic: "Experience", text: "I've worked as a full stack developer(laravel/React), freelancing design projects" },
+        { topic: "Educational", text: "I studied Computer Science from Purbanchal University and have since focused on self-directed learning in web development and applied AI." },
+        { topic: "Available", text: "I'm currently open to new opportunities, both freelance projects and full-time roles." },
+        { topic: "About me", text: "I'm Kritishma Pradhan, a passionate computer engineering student and aspiring developer from Nepal. I have a strong interest in programming, frontend development, embedded systems, machine learning, data science, and creative design." },
+        { topic: "Kritishma Pradhan", text: "My full name is Kritishma Pradhan. I am a computer engineering student who is eager to explore the computer world, improve my technical abilities, and contribute to innovative projects." },
+        { topic: "Career interests", text: "I am interested in programming, web development, frontend development, backend development, embedded systems, artificial intelligence, machine learning, data science, graphic design, and creative technology projects." },
+        { topic: "Education", text: "I am pursuing a Bachelor of Computer Engineering at Acme Engineering College under Purbanchal University." },
+        { topic: "Relevant coursework", text: "My relevant coursework includes Data Structures and Algorithms, Artificial Intelligence, Operating Systems, Microprocessor, Data Mining, and Object-Oriented Programming." },
+        { topic: "Programming skills", text: "My programming skills include Python with Django, HTML, CSS, JavaScript, C, C++, SQL, and data analysis." },
+        { topic: "Design and creativity skills", text: "My design and creativity skills include Adobe Photoshop, Canva, Inkscape, graphic design, and Figma." },
+        { topic: "Hardware and IoT skills", text: "I have experience with Arduino Uno and Cisco Packet Tracer, and I am interested in embedded systems and microcontroller programming." },
+        { topic: "Tools and platforms", text: "I use Git, GitHub, Visual Studio Code, Google Colab, and Orange Data Mining." },
+        { topic: "Hastakala by K", text: "Hastakala by K is an ecommerce website created for a small crochet business. The project uses HTML, CSS, JavaScript, and Python with Django. It includes a static live demo and an ecommerce platform source code repository." },
+        { topic: "Hastakala by K links", text: "The Hastakala by K static site is available at https://kritishmapradhan.github.io/hastakalabyk-website-for-crochet-brand/. The ecommerce platform source code is available at https://github.com/KritishmaPradhan/Hastakala-by-K-e-commerce-platform.git." },
+        { topic: "Lost and Found System", text: "Lost and Found System, also called FindIt, is a full-stack web application for schools and colleges. It allows students to report lost or found items and connect through real-time private chat. The project uses Laravel with PHP, MySQL, and React JS." },
+        { topic: "FindIt project link", text: "The FindIt Lost and Found System source code is available at https://github.com/KritishmaPradhan/Lost-and-Found-Tracker---FindIT-Laravel-ReactJS-Project.git." },
+        { topic: "Brainy Snake Game", text: "Brainy Snake Game is a retro-inspired Snake game with quiz-based gameplay and a user and admin authentication system. It was built using Python, Turtle, and SQLite." },
+        { topic: "Brainy Snake Game link", text: "The Brainy Snake Game source code is available at https://github.com/KritishmaPradhan/The-Brainy-snake-game." },
+        { topic: "Figma designs", text: "My Figma design projects include a UI/UX digital brochure called Visit Nepal, a personal digital diary design featuring travel, food, and creative experiences, and a real estate admin panel prototype called Basobas." },
+        { topic: "Visit Nepal design", text: "Visit Nepal is a UI/UX digital brochure prototype created in Figma." },
+        { topic: "Digital Diary design", text: "Digital Diary is a personal digital journal design focused on travel, food, and creative experiences." },
+        { topic: "Basobas design", text: "Basobas is a real estate admin panel web dashboard design prototype created in Figma." },
+        { topic: "Creative work", text: "My creative work includes Canva designs, Inkscape designs, graphic design projects, and logo designs. I have created designs inspired by projects such as Claude, Orange, Starbucks, Visit Nepal, Ethical Pink, Kamal, ACIT, Saranz, and the Brainy Snake Game." },
+        { topic: "Arduino IDE training", text: "Through an Arduino IDE training program, I gained hands-on experience with microcontroller programming and embedded systems." },
+        { topic: "Machine learning and data science training", text: "I completed machine learning and data science training where I learned the basics of machine learning algorithms with Data Science." },
+        { topic: "Coding competitions", text: "I have participated in coding competitions and various coding challenges to improve my problem-solving skills." },
+        { topic: "Technical exhibitions", text: "I have participated in and volunteered at technical exhibitions showcasing innovative projects." },
+        { topic: "Event organization", text: "I have organized and marketed events, volunteered, presented hackathon project demos, and participated in tech debates." },
+        { topic: "Design competitions", text: "I have participated in design competitions and completed basic graphic design training." },
+        { topic: "Creative writing", text: "I have developed and curated literary content through personal writing projects and web publishing practice." },
+        { topic: "Achievements and certifications", text: "My achievements and certifications include organizing the Jyoti ACIT Tech Expo 2023, participating in ACIT Design Blitz 2023, organizing ACIT Tech Fest 2.0 in 2025, completing Early Learning Skills training in 2014, completing an Edu-Com course on Excel, PowerPoint, email, and internet skills, earning a Nepal Scout Certificate of Accomplishment, and participating in the Aarohan 2.0 Coding Competition in 2024." },
+        { topic: "ACIT Tech Fest", text: "I participated as an organizer in ACIT Tech Fest 2.0 in 2025." },
+        { topic: "Contact", text: "I am based in Nepal. My email address is pradhankritishma@gmail.com and my phone number is +977 9864540394." },
+        { topic: "GitHub", text: "My GitHub profile is available at https://github.com/KritishmaPradhan." },
+        { topic: "LinkedIn", text: "My LinkedIn profile is available at https://linkedin.com/in/kritishma-pradhan-8181b1293." }
+    ];
+
+    const tokenize = text => text.toLowerCase().match(/[a-z0-9']+/g) || [];
+    const intentRules = [
+        { keywords: ['project', 'projects', 'portfolio', 'built', 'developed'], topic: 'Projects' },
+        { keywords: ['skill', 'skills', 'technology', 'technologies', 'programming'], topic: 'Skills' },
+        { keywords: ['available', 'availability', 'freelance', 'hire', 'hiring', 'opportunity', 'opportunities'], topic: 'Available' },
+        { keywords: ['education', 'educational', 'study', 'studied', 'degree', 'coursework'], topic: 'Educational' },
+        { keywords: ['contact', 'email', 'phone', 'reach'], topic: 'Contact' },
+        { keywords: ['github'], topic: 'GitHub' },
+        { keywords: ['linkedin'], topic: 'LinkedIn' }
+    ];
+    const docTokens = knowledgeBase.map(doc => tokenize(`${doc.text} ${doc.topic}`));
+    const documentFrequency = {};
+    docTokens.forEach(tokens => new Set(tokens).forEach(token => {
+        documentFrequency[token] = (documentFrequency[token] || 0) + 1;
+    }));
+
+    const findIntentMatch = question => {
+        const queryTokens = new Set(tokenize(question));
+        const rule = intentRules.find(candidate =>
+            candidate.keywords.some(keyword => queryTokens.has(keyword))
+        );
+        if (!rule) return null;
+
+        const index = knowledgeBase.findIndex(doc => doc.topic === rule.topic);
+        return index === -1 ? null : { index, score: 10 };
+    };
+
+    const findBestMatch = question => {
+        const intentMatch = findIntentMatch(question);
+        if (intentMatch) return intentMatch;
+
+        const queryTokens = tokenize(question);
+        let best = { index: -1, score: 0 };
+        docTokens.forEach((tokens, index) => {
+            const tokenSet = new Set(tokens);
+            const score = queryTokens.reduce((total, token) => {
+                if (!tokenSet.has(token)) return total;
+                return total + Math.log((knowledgeBase.length + 1) / ((documentFrequency[token] || 0) + 1)) + 1;
+            }, 0);
+            if (score > best.score) best = { index, score };
+        });
+        return best;
+    };
+
+    const addMessage = (text, sender, topic) => {
+        const message = document.createElement('div');
+        message.className = `portfolio-chatbot-message ${sender}`;
+        message.textContent = text;
+        if (topic) {
+            const score = document.createElement('span');
+            score.className = 'portfolio-chatbot-score';
+            score.textContent = `matched topic: ${topic}`;
+            message.appendChild(score);
+        }
+        messages.appendChild(message);
+        messages.scrollTop = messages.scrollHeight;
+    };
+
+    const respondTo = question => {
+        addMessage(question, 'user');
+        const best = findBestMatch(question);
+        if (best.index === -1 || best.score < 1.2) {
+            addMessage("I don't have specific info on that yet - feel free to reach out through the contact form!", 'bot');
+        } else {
+            const answer = knowledgeBase[best.index];
+            addMessage(answer.text, 'bot', answer.topic);
+        }
+    };
+
+    const setOpen = isOpen => {
+        chatbot.classList.toggle('is-open', isOpen);
+        toggle.setAttribute('aria-expanded', String(isOpen));
+        toggle.setAttribute('aria-label', isOpen ? 'Close portfolio chatbot' : 'Open portfolio chatbot');
+        panel.setAttribute('aria-hidden', String(!isOpen));
+        if (isOpen) input.focus();
+    };
+
+    toggle.addEventListener('click', () => setOpen(!chatbot.classList.contains('is-open')));
+    close.addEventListener('click', () => setOpen(false));
+    form.addEventListener('submit', event => {
+        event.preventDefault();
+        const question = input.value.trim();
+        if (!question) return;
+        respondTo(question);
+        input.value = '';
+    });
+
+    ['Give an overview of your projects', 'What are your skills?', 'Are you available for work?'].forEach(question => {
+        const chip = document.createElement('button');
+        chip.className = 'portfolio-chatbot-chip';
+        chip.type = 'button';
+        chip.textContent = question;
+        chip.addEventListener('click', () => respondTo(question));
+        suggestions.appendChild(chip);
+    });
+
+    addMessage('Hi! Ask me anything about this portfolio.', 'bot');
+};
+
+initPortfolioChatbot();

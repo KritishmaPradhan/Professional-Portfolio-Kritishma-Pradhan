@@ -478,6 +478,28 @@
         </div>
     </section>
 
+    <!-- Portfolio Chatbot -->
+    <div class="portfolio-chatbot" id="portfolio-chatbot">
+        <button class="portfolio-chatbot-toggle" id="portfolio-chatbot-toggle" type="button" aria-label="Open portfolio chatbot" aria-expanded="false" aria-controls="portfolio-chatbot-panel">
+            <i class="fas fa-comments" aria-hidden="true"></i>
+        </button>
+        <div class="portfolio-chatbot-panel" id="portfolio-chatbot-panel" role="dialog" aria-label="Portfolio chatbot" aria-hidden="true">
+            <div class="portfolio-chatbot-header">
+                <div>
+                    <h2>Ask about my portfolio</h2>
+                    <p>Learn more about Kritishma's work</p>
+                </div>
+                <button class="portfolio-chatbot-close" id="portfolio-chatbot-close" type="button" aria-label="Close portfolio chatbot">&times;</button>
+            </div>
+            <div class="portfolio-chatbot-messages" id="portfolio-chatbot-messages" aria-live="polite"></div>
+            <div class="portfolio-chatbot-suggestions" id="portfolio-chatbot-suggestions"></div>
+            <form class="portfolio-chatbot-form" id="portfolio-chatbot-form">
+                <input id="portfolio-chatbot-input" type="text" placeholder="Ask something..." autocomplete="off" aria-label="Ask about the portfolio">
+                <button type="submit" aria-label="Send message"><i class="fas fa-paper-plane" aria-hidden="true"></i></button>
+            </form>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="container">
