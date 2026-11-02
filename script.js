@@ -274,8 +274,23 @@ initExperienceCarousel();
 
 // Dynamic Achievements section (filters + lightbox)
 const initAchievementsSection = () => {
-    const items = document.querySelectorAll('.gallery-item');
+    const gallery = document.querySelector('#achievements .gallery-grid');
+    const items = gallery?.querySelectorAll('.gallery-item') || [];
     if (!items.length) return;
+
+    const moreBtn = document.querySelector('#achievements .gallery-more-btn');
+    if (moreBtn) {
+        moreBtn.addEventListener('click', () => {
+            const isExpanded = moreBtn.getAttribute('aria-expanded') === 'true';
+            items.forEach((item, index) => {
+                if (index >= 3) item.hidden = isExpanded;
+            });
+            moreBtn.setAttribute('aria-expanded', String(!isExpanded));
+            moreBtn.innerHTML = isExpanded
+                ? 'More <i class="fas fa-chevron-down" aria-hidden="true"></i>'
+                : 'Less <i class="fas fa-chevron-up" aria-hidden="true"></i>';
+        });
+    }
 
     const lightbox = document.createElement('div');
     lightbox.className = 'gallery-lightbox';
