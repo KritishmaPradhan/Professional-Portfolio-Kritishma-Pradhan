@@ -43,26 +43,74 @@ window.addEventListener('scroll', () => {
 // Set current year in footer
 document.getElementById('current-year').textContent = new Date().getFullYear();
 
-//omit form submission code for now
-// // Form submission
-// const contactForm = document.getElementById('contact-form');
-// if (contactForm) {
-//     contactForm.addEventListener('submit', function(e) {
-//         e.preventDefault();
-        
-//         // Get form data
-//         const formData = new FormData(this);
-//         const name = formData.get('name');
-//         const email = formData.get('email');
-//         const subject = formData.get('subject');
-//         const message = formData.get('message');
-        
-//         // Here you would typically send the form data to a server
-//         // For now, we'll just show an alert
-//         alert(`Thank you for your message, ${name}! I'll get back to you soon at ${email}.`);
-//         this.reset();
-//     });
-// }
+// Contact form submission
+
+const contactForm = document.getElementById("contact-form");
+const contactStatus = document.getElementById("contact-status");
+
+const API_URL =
+  "https://portfolio-contact-api.pradhankritishma.workers.dev/contact";
+
+contactForm.addEventListener("submit", async function (event) {
+  event.preventDefault();
+
+  const submitButton = contactForm.querySelector(
+    'button[type="submit"]'
+  );
+
+  // Collect form data
+  const formData = new FormData(contactForm);
+
+  const payload = {
+    name: String(formData.get("name") || "").trim(),
+    email: String(formData.get("email") || "").trim(),
+    subject: String(formData.get("subject") || "").trim(),
+    message: String(formData.get("message") || "").trim()
+  };
+
+  // Prevent duplicate submissions
+  submitButton.disabled = true;
+  submitButton.textContent = "Sending...";
+
+  contactStatus.textContent = "Sending your message...";
+
+  try {
+    // Send data to Cloudflare Worker
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      throw new Error(
+        result.message || "Unable to send your message."
+      );
+    }
+
+    // Success
+    contactStatus.textContent =
+      "Thank you! Your message has been sent successfully.";
+
+    contactForm.reset();
+
+  } catch (error) {
+    console.error("Contact form error:", error);
+
+    contactStatus.textContent =
+      error.message || "Something went wrong. Please try again.";
+
+  } finally {
+    // Restore button
+    submitButton.disabled = false;
+    submitButton.textContent = "Send Message";
+  }
+});
+
 
 // Animate elements on scroll
 const animateOnScroll = () => {
